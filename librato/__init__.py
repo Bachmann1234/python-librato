@@ -209,6 +209,8 @@ class LibratoConnection(object):
             return Gauge.from_dict(self, resp)
         elif resp['type'] == 'counter':
             return Counter.from_dict(self, resp)
+        elif resp['type'] == 'composite':
+            return resp
         else:
             raise Exception('The server sent me something that is not a Gauge nor a Counter.')
 
